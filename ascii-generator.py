@@ -34,23 +34,23 @@ def generator():
         f.write(ascii_img)
 
 
-def get_file_name(path: str):
+def get_file_name(path: str) -> str:
     _, tail = os.path.split(path)
     return tail.split(".")[0]
 
 
-def resize(image: Image, new_width: int = 100):
+def resize(image: Image, new_width: int = 100) -> Image:
     width, height = image.size
     new_height = new_width * height / width
     new_height = int(new_height)
     return image.resize((new_width, new_height))
 
 
-def to_greyscale(image: Image):
+def to_greyscale(image: Image) -> Image:
     return image.convert("L")
 
 
-def pixel_to_ascii(image: Image):
+def pixel_to_ascii(image: Image) -> str:
     pixels = image.getdata()
     ascii_str = ""
     for pixel in pixels:
